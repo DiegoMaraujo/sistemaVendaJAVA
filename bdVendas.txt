@@ -1,0 +1,54 @@
+CREATE DATABASE dbvendasbl;
+use dbvendasbl;
+
+create table tbl_cliente(
+pk_id_cliente bigint   primary KEY auto_increment,
+cli_nome varchar (250),
+cli_endereco varchar  (250),
+cli_bairro varchar  (250)  ,
+cli_cidade varchar  (250)  ,
+cli_uf varchar (2)   ,
+cli_cep varchar (9)   ,
+cli_telefone varchar (15) null
+);
+
+create table tbl_usuario(
+pk_id_usuario bigint (20)  primary key AUTO_INCREMENT,
+usu_nome varchar (250) ,
+usu_login varchar (250)   ,
+usu_senha varchar (15)
+);
+
+create table tbl_produto(
+pk_id_produto  bigint (20)  primary key AUTO_INCREMENT, 
+pro_nome varchar  (250)   ,
+pro_valor double,
+pro_estoque int (11) 
+);
+
+create table tbl_vendas(
+pk_id_vendas bigint (20)  primary key AUTO_INCREMENT,
+fk_cliente bigint (20)  unsigned ,
+ven_date_venda date ,
+ven_valor_liquido double ,
+ven_valor_bruto double,
+ven_valor_desconto double  
+);
+
+create table tbl_vendas_produtos(
+pk_id_venda_produto bigint (20)  primary key AUTO_INCREMENT,
+fk_produto bigint (20)  unsigned ,
+fk_vendas  bigint (20)  unsigned,
+ven_pro_valor double , 
+ven_pro_quantidade int(11)  
+
+);
+
+create table tbl_forma_pagamento(
+pk_id_for_pag bigint (20)  primary key AUTO_INCREMENT,
+descricao_for_pag varchar (255),
+desconto_for_pag float,
+parcelas_for_pag int,
+situacao_for_pag int 
+);
+
